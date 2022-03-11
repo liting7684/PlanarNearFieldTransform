@@ -1,6 +1,11 @@
 # PlanarNearFieldTransform
-这是近远场变换的代码仓库，欢迎各位学弟学妹  
-# 为本项目做贡献
+这是近远场变换的代码仓库，欢迎各位学弟学妹
+
+
+https://img.shields.io/badge/version-1.0-brightgreen
+
+
+## 为本项目做贡献
 一.点击**Edit**修改代码
 
 
