@@ -3,6 +3,8 @@
 
 ![](https://img.shields.io/badge/version-1.0-brightgreen)
 
+![](https://img.shields.io/badge/developer-THY%20CSY-blue)
+
 
 ## 为本项目做贡献
 一.点击**Edit**修改代码
