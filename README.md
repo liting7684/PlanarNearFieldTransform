@@ -1,6 +1,6 @@
 # PlanarNearFieldTransform
 这是近远场变换的代码仓库，欢迎各位学弟学妹  
-#### 为本项目做贡献
+## 为本项目做贡献
 一.点击**Edit**修改代码   
 ![image-20220311181417257](https://user-images.githubusercontent.com/61956659/157849089-564a11ab-3109-4eb4-8dfe-4860e8436e91.png)
 二.修改代码   
