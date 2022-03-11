@@ -1,9 +1,7 @@
 # PlanarNearFieldTransform
 这是近远场变换的代码仓库，欢迎各位学弟学妹
 
-![](https://img.shields.io/badge/version-1.0-brightgreen)
-
-![](https://img.shields.io/badge/developer-THY%20CSY-blue)
+![](https://img.shields.io/badge/version-1.0-brightgreen) ![](https://img.shields.io/badge/developer-THY%20CSY-blue)
 
 
 ## 为本项目做贡献
