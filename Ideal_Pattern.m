@@ -1,7 +1,16 @@
-function Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%¼ÆËãÀíÏëÆ½Ãæ·½ÏòÍ¼
+function Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%è®¡ç®—ç†æƒ³å¹³é¢æ–¹å‘å›¾
+% Input Parameter:
+% Amp:[43*31]ç”µæµå¹…åº¦åˆ†å¸ƒçŸ©é˜µ
+% M:xæ–¹å‘å¯¹ç§°é˜µå­ä¸ªæ•°
+% N:yæ–¹å‘å¯¹ç§°é˜µå­ä¸ªæ•°
+% lambda:ä¸ºæ³¢é•¿
+% dx:ä¸ºxæ–¹å‘é‡‡æ ·ç‚¹é—´è·
+% dy:ä¸ºyæ–¹å‘é‡‡æ ·ç‚¹é—´è·
+% Im:åŠæ³¢é˜µå­æ³¢è…¹ç”µæµ
+% theta:ä¸zè½´çš„å¤¹è§’
 midM=(M-1)/2;midN=(N-1)/2;
-k=2*pi/lambda;%²¨³¤
-%% EÃæ·½ÏòÍ¼
+k=2*pi/lambda;%æ³¢é•¿
+%% Eé¢æ–¹å‘å›¾
 fEtheta=0;
 for m=1:1:M
     for n=1:1:N
@@ -11,20 +20,20 @@ for m=1:1:M
 end
 fEtheta=60*Im*abs(cos(0.5*pi*sin(theta))./cos(theta)).*abs(fEtheta);
 figure(2);
-plot(180*theta/pi,20*log(fEtheta./max(fEtheta)));%Ö±½Ç×ø±ê»æÍ¼ÇÒ¹éÒ»»¯´¦Àí
+plot(180*theta/pi,20*log(fEtheta./max(fEtheta)));%ç›´è§’åæ ‡ç»˜å›¾ä¸”å½’ä¸€åŒ–å¤„ç†
 hold on;
-title('¹éÒ»»¯EÃæÀíÂÛ·½ÏòÍ¼');xlabel('theta');ylabel('f_Etheta');
+title('å½’ä¸€åŒ–Eé¢ç†è®ºæ–¹å‘å›¾');xlabel('theta');ylabel('f_Etheta');
 
 figure(3);
-% polarplot(theta,20*log(max(fEtheta)./fEtheta));%¼«×ø±ê¹éÒ»»¯´¦Àí
+% polarplot(theta,20*log(max(fEtheta)./fEtheta));%æåæ ‡å½’ä¸€åŒ–å¤„ç†
 polarplot(theta,20*log(fEtheta));
 pax=gca;
 pax.ThetaDir='clockwise';
 pax.ThetaZeroLocation='top';
-title('EÃæ·½ÏòÍ¼ÀíÂÛ½á¹û');
+title('Eé¢æ–¹å‘å›¾ç†è®ºç»“æœ');
 
 
-%% HÃæ·½ÏòÍ¼
+%% Hé¢æ–¹å‘å›¾
 fHtheta=0;
 for m=1:M
     for n=1:N
@@ -33,18 +42,18 @@ for m=1:M
 end
 fHtheta=60*Im*abs(fHtheta);
 figure(4);
-plot(180*theta/pi,20*log(fHtheta./max(fHtheta)));%Ö±½Ç×ø±ê»æÍ¼ÇÒ¹éÒ»»¯´¦Àí
+plot(180*theta/pi,20*log(fHtheta./max(fHtheta)));%ç›´è§’åæ ‡ç»˜å›¾ä¸”å½’ä¸€åŒ–å¤„ç†
 hold on;
-title('¹éÒ»»¯HÃæÀíÂÛ·½ÏòÍ¼');xlabel('theta');ylabel('f_Htheta');
+title('å½’ä¸€åŒ–Hé¢ç†è®ºæ–¹å‘å›¾');xlabel('theta');ylabel('f_Htheta');
 
 figure(5);
-% polarplot(theta,20*log(max(fEtheta)./fEtheta));%¼«×ø±ê¹éÒ»»¯´¦Àí
+% polarplot(theta,20*log(max(fEtheta)./fEtheta));%æåæ ‡å½’ä¸€åŒ–å¤„ç†
 polarplot(theta,20*log(fHtheta));
 
 pax=gca;
 pax.ThetaDir='clockwise';
 pax.ThetaZeroLocation='top';
-title('HÃæ·½ÏòÍ¼ÀíÂÛ½á¹û');
+title('Hé¢æ–¹å‘å›¾ç†è®ºç»“æœ');
 
 disp('__________Complete the calculation of ideal pattern__________');
 end
