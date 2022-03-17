@@ -16,14 +16,16 @@ for i=1:N
     ampy(i)=cos(pi*(i-midN-1)/N);
 end
 
-%x方向切比雪夫分布
+% x方向切比雪夫分布
 SLL=-55;%副瓣电平
 ampx=Chebyshev_Dist_Odd(M,SLL);
- 
+% ampx=chebwin1(43,-55);
+
 Amp=ampx'*ampy;
 [ymesh,xmesh]=meshgrid(Yn,Xm);
 figure(1);
 surf(xmesh,ymesh,Amp);
 xlabel('xdimension');ylabel('ydimension');title('对称阵子幅度分布');
 disp('__________Complete the calculation of current__________');
+% disp(Amp);
 end

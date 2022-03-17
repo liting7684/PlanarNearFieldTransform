@@ -1,5 +1,6 @@
 % -------------------------------------------------------------------------
-% MATLAB Code
+% MATLAB Code 
+% Author: Csy
 % Generated on: 07-Mar-2022 15:38:42
 
 % Generate:The main function;
@@ -22,12 +23,14 @@
 
 clear all;close all;clc;
 M=43; N=31;
-lambda=100;
+% freq = 9375e6;
+% lambda = physconst('LightSpeed')/freq;
+lambda=32;
 Im=1;%半波振子波腹电流
 dx=0.7*lambda;dy=0.7*lambda;%x,y方向天线单元的间距
 theta=linspace(-pi/4,pi/4,600);%theta角度范围精度
 deltax=0.45*lambda;deltay=0.45*lambda;% deltax和deltay为在x轴和y轴上的采样间距
-d=4.5*lambda;%采样平面距离阵列平面的间距
+d=4*lambda;%采样平面距离阵列平面的间距
 Mc=128; Nc=128;%计算机仿真x,y方向的采样点数目,取2的倍数
 
 disp('__________this is the begining__________')

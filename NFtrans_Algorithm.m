@@ -19,7 +19,7 @@ f_Etheta_NF=abs(f_Etheta_NF)*deltax*deltay/lambda;%公式5-62
 
 figure(2);
 % plot(180*theta/pi,20*log(f_Enf2ff));%近远变换方向图直角坐标绘图
-plot(180*theta/pi,20*log(f_Etheta_NF./max(f_Etheta_NF)),'-.r');%近远变换E面方向图直角坐标绘图
+plot(180*theta/pi,20*log10(f_Etheta_NF./max(f_Etheta_NF)),'-.r');%近远变换E面方向图直角坐标绘图
 xlabel('theta');ylabel('f_Etheta_NF');title('近远变换E面归一化直角坐标方向图');
 
 figure(7);
@@ -50,7 +50,7 @@ f_Htheta_NF=abs(f_Htheta_NF).*abs(cos(theta))*deltax*deltay/lambda;%公式5-62
 
 figure(4);
 % plot(180*theta/pi,20*log(f_Enf2ff));%近远变换方向图直角坐标绘图
-plot(180*theta/pi,20*log(f_Htheta_NF./max(f_Htheta_NF)),'-.r');%近远变换E面方向图直角坐标绘图
+plot(180*theta/pi,20*log10(f_Htheta_NF./max(f_Htheta_NF)),'-.r');%近远变换E面方向图直角坐标绘图
 xlabel('theta');ylabel('f_Htheta_NF');title('近远变换H面归一化直角坐标方向图');
 
 figure(9);
