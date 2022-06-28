@@ -27,8 +27,7 @@ for m=1:1:M
     for n=1:1:N
         R1mn=sqrt((Xm1(m)-XL1)^2+(Yn(n)-YL2)^2+d^2);
         R2mn=sqrt((Xm11(m)-XL1)^2+(Yn(n)-YL2)^2+d^2);
-        Ex=Ex+Amp(m,n)*(exp(-1i*k*R1mn)/R1mn+exp(-1i*k*R2mn)/R2mn);
-        
+        Ex=Ex+Amp(m,n)*(exp(-1i*k*R1mn)/R1mn+exp(-1i*k*R2mn)/R2mn); 
     end
 end
 

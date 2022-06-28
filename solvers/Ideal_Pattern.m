@@ -1,16 +1,24 @@
+% -------------------------------------------------------------------------
+% 对称振子的电流幅度分布
+% M,N: x,y方向天线单元的个数;
+% lambda: 电磁波波长
+% dx,dy是x,y方向单元的间距
+% Im为归一化电流最大值
+% -------------------------------------------------------------------------
+
 function Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%计算理想平面方向图
 midM=(M-1)/2;midN=(N-1)/2;
 k=2*pi/lambda;%波长
 %% E面方向图
-fEtheta=zeros(1,600);
+num = numel(theta);
+fEtheta=zeros(1,num);
 
 for m=1:1:M
     for n=1:1:N
         fEtheta=fEtheta+Amp(m,n)*exp(1i*k*(m-midM-1)*dx.*sin(theta));
     end
-    
 end
-fEtheta=60*Im*abs( cos(0.5*pi*sin(theta))./cos(theta) ).*abs(fEtheta);
+fEtheta=60*Im*abs(cos(0.5*pi*sin(theta))./cos(theta) ).*abs(fEtheta);
 figure(2);
 plot(180*theta/pi,20*log10(fEtheta./max(fEtheta)));%直角坐标绘图且归一化处理
 hold on;
@@ -23,7 +31,6 @@ pax=gca;
 pax.ThetaDir='clockwise';
 pax.ThetaZeroLocation='top';
 title('E面方向图理论结果');
-
 
 %% H面方向图
 fHtheta=0;
