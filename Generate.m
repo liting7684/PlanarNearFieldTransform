@@ -42,7 +42,7 @@ Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%计算理想平面方向图
 disp('__________plotting the pattern by NFtransition Algorithm__________');
 NFtrans_Algorithm(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,d,Mc,Nc);%近远场变换计算方向图
 disp('__________plotting the pattern by NFtransition Algorithm Using FFT__________');
-data_nf2ff = nf2ff_planar_thy(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding);%用平面波谱推导远场方向图
+data_nf2ff = nf2ff_planar_fft(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding);%用平面波谱推导远场方向图
 disp('__________plotting phi=0 and phi=90 cut__________');
 plotFFPhiCut(data_nf2ff,[0,pi/2]);
 disp('__________this is the end__________')

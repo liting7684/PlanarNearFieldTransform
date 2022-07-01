@@ -13,7 +13,7 @@
 % Author:THY
 %% 
 
-function [data_nf2ff] = nf2ff_planar_thy(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding)
+function [data_nf2ff] = nf2ff_planar_fft(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding)
     % --------------------------------------------------
     % 构建结果表
     % p是theta的长度，t是phi的长度
@@ -88,7 +88,7 @@ function [data_nf2ff] = nf2ff_planar_thy(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,t
     Ey = C*cos(theta_grid).*fy_ff;
     Ez = C*cos(theta_grid).*fz_ff;
 
-    % --------------------------------------------------
+    % ---------------------------------------------------------------------
     s = numel(theta_grid);
     data_nf2ff.Etheta = reshape(Etheta,s,1);
     data_nf2ff.Ephi = reshape(Ephi,s,1);
@@ -96,5 +96,5 @@ function [data_nf2ff] = nf2ff_planar_thy(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,t
     data_nf2ff.Eabs = vecnorm(data_nf2ff.E,2,2);
     data_nf2ff.phi = reshape(phi_grid,s,1);
     data_nf2ff.theta= reshape(theta_grid,s,1);
-    % --------------------------------------------------
+    % ---------------------------------------------------------------------
 end
