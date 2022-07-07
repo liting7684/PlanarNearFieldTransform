@@ -5,19 +5,19 @@
 % Generate:The main function;
 % Function: generate the antenna pattern using NearField data and comparing
 % with ideal pattern;
-% Current_Excitation(M,N,dx,dy);¼ÆËãµçÁ÷·Ö²¼Amn
-% Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta);¼ÆËãÀíÏëÆ½Ãæ·½ÏòÍ¼
-% NFtrans_Algorithm(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,d,Numc);½üÔ¶³¡±ä»»¼ÆËã·½ÏòÍ¼
+% Current_Excitation(M,N,dx,dy);è®¡ç®—ç”µæµåˆ†å¸ƒAmn
+% Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta);è®¡ç®—ç†æƒ³å¹³é¢æ–¹å‘å›¾
+% NFtrans_Algorithm(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,d,Numc);è¿‘è¿œåœºå˜æ¢è®¡ç®—æ–¹å‘å›¾
 
 % variables:
-% M,N: x,y·½ÏòÌìÏßµ¥ÔªµÄ¸öÊı;
-% lambda: µç´Å²¨²¨³¤
-% Im: °ë²¨Õñ×Ó²¨¸¹µçÁ÷
-% dx,dy: x,y·½ÏòÌìÏßµ¥ÔªµÄ¼ä¾à
-% theta: theta½Ç¶È·¶Î§¾«¶È
-% deltax,deltay: ÔÚxÖáºÍyÖáÉÏµÄ²ÉÑù¼ä¾à
-% d: ²ÉÑùÆ½Ãæ¾àÀëÕóÁĞÆ½ÃæµÄ¼ä¾à
-% Mc,Nc: ¼ÆËã»ú·ÂÕæx,y·½ÏòµÄ²ÉÑùµãÊıÄ¿,È¡2µÄ±¶Êı
+% M,N: x,yæ–¹å‘å¤©çº¿å•å…ƒçš„ä¸ªæ•°;
+% lambda: ç”µç£æ³¢æ³¢é•¿
+% Im: åŠæ³¢æŒ¯å­æ³¢è…¹ç”µæµ
+% dx,dy: x,yæ–¹å‘å¤©çº¿å•å…ƒçš„é—´è·
+% theta: thetaè§’åº¦èŒƒå›´ç²¾åº¦
+% deltax,deltay: åœ¨xè½´å’Œyè½´ä¸Šçš„é‡‡æ ·é—´è·
+% d: é‡‡æ ·å¹³é¢è·ç¦»é˜µåˆ—å¹³é¢çš„é—´è·
+% Mc,Nc: è®¡ç®—æœºä»¿çœŸx,yæ–¹å‘çš„é‡‡æ ·ç‚¹æ•°ç›®,å–2çš„å€æ•°
 % -------------------------------------------------------------------------
 
 clear all;close all;clc;
@@ -25,33 +25,25 @@ M=43; N=31;
 % freq = 9375e6;
 % lambda = physconst('LightSpeed')/freq;
 lambda=32;
-Im=1;%°ë²¨Õñ×Ó²¨¸¹µçÁ÷
-dx=0.7*lambda;dy=0.7*lambda;%x,y·½ÏòÌìÏßµ¥ÔªµÄ¼ä¾à
-theta=linspace(-pi/4,pi/4,600);%theta½Ç¶È·¶Î§¾«¶È
-phi=linspace(0,2*pi,600);%phi½Ç¶È·¶Î§¾«¶È
-deltax=0.45*lambda;deltay=0.45*lambda;% deltaxºÍdeltayÎªÔÚxÖáºÍyÖáÉÏµÄ²ÉÑù¼ä¾à
-d=4*lambda;%²ÉÑùÆ½Ãæ¾àÀëÕóÁĞÆ½ÃæµÄ¼ä¾à
-Mc=128; Nc=128;%¼ÆËã»ú·ÂÕæx,y·½ÏòµÄ²ÉÑùµãÊıÄ¿,È¡2µÄ±¶Êı
-padding = 1;%³ä0¸öÊı
+Im=1;%åŠæ³¢æŒ¯å­æ³¢è…¹ç”µæµ
+dx=0.7*lambda;dy=0.7*lambda;%x,yæ–¹å‘å¤©çº¿å•å…ƒçš„é—´è·
+theta=linspace(-pi/4,pi/4,600);%thetaè§’åº¦èŒƒå›´ç²¾åº¦
+phi=linspace(0,pi/2,451);%phiè§’åº¦èŒƒå›´ç²¾åº¦
+deltax=0.45*lambda;deltay=0.45*lambda;% deltaxå’Œdeltayä¸ºåœ¨xè½´å’Œyè½´ä¸Šçš„é‡‡æ ·é—´è·
+d=4*lambda;%é‡‡æ ·å¹³é¢è·ç¦»é˜µåˆ—å¹³é¢çš„é—´è·
+Mc=128; Nc=128;%è®¡ç®—æœºä»¿çœŸx,yæ–¹å‘çš„é‡‡æ ·ç‚¹æ•°ç›®,å–2çš„å€æ•°
+padding = 4;%å……0ä¸ªæ•°
 disp('__________this is the beginning__________')
 
-Amp=Current_Excitation(M,N,dx,dy);%¼ÆËãµçÁ÷·Ö²¼Amn
-%%
-for i = 11:1:15
-    for j = 18:1:21
-        Amp(i,j)=0;
-    end
-end
+Amp=Current_Excitation(M,N,dx,dy);%è®¡ç®—ç”µæµåˆ†å¸ƒAmn
 
-surf(Amp)
-%%
-Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%¼ÆËãÀíÏëÆ½Ãæ·½ÏòÍ¼
+Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%è®¡ç®—ç†æƒ³å¹³é¢æ–¹å‘å›¾
 
 disp('__________plotting the pattern by NFtransition Algorithm__________');
-NFtrans_Algorithm(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,d,Mc,Nc);%½üÔ¶³¡±ä»»¼ÆËã·½ÏòÍ¼
+NFtrans_Algorithm(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,d,Mc,Nc);%è¿‘è¿œåœºå˜æ¢è®¡ç®—æ–¹å‘å›¾
 disp('__________plotting the pattern by NFtransition Algorithm Using FFT__________');
-data_nf2ff = nf2ff_planar_fft(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding);%ÓÃÆ½Ãæ²¨Æ×ÍÆµ¼Ô¶³¡·½ÏòÍ¼
+data_nf2ff = nf2ff_planar_thy(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding);%ç”¨å¹³é¢æ³¢è°±æ¨å¯¼è¿œåœºæ–¹å‘å›¾
 disp('__________plotting phi=0 and phi=90 cut__________');
-plotFFPhiCut(data_nf2ff,[0,pi/2]);
+plotFFPhiCut(data_nf2ff,[0,pi/3]);
 disp('__________this is the end__________')
 
