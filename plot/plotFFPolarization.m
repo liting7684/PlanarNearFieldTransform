@@ -1,6 +1,6 @@
 function [] = plotFFPolarization(data_nf2ff,phi_cut)
 
-%plotFFPolarization(data_nf2ff)º¯ÊıÒªÇótheta_rangeºÍphi_rangeµÄµãÊıÒ»Ñù
+%plotFFPolarization(data_nf2ff)å‡½æ•°è¦æ±‚theta_rangeå’Œphi_rangeçš„ç‚¹æ•°ä¸€æ ·
 normalized = true;
 logarithmic = true;
 
@@ -13,17 +13,17 @@ j = find(data_nf2ff.theta==theta_cut);
 Etheta_cut_angles = data_nf2ff.theta(i);
 Ephi_cut_angles = data_nf2ff.phi(j);
 
-% %ÓÉÓÚ²ÉÑùÆ½Ãæ²»ÊÇÕı·½ĞÎ£¬³¤ºÍ¿í²»Ò»Ñù£¬¼ÆËãÊ±ÄÑÒÔÔËËã
-% %²ÉÓÃ¶Ô²ÉÑùµãÉÙµÄ±ß½øĞĞ²åÖµµÄ·½·¨£¬Ê¹µÃ³¤ºÍ¿íÒ»ÖÂ
+% %ç”±äºé‡‡æ ·å¹³é¢ä¸æ˜¯æ­£æ–¹å½¢ï¼Œé•¿å’Œå®½ä¸ä¸€æ ·ï¼Œè®¡ç®—æ—¶éš¾ä»¥è¿ç®—
+% %é‡‡ç”¨å¯¹é‡‡æ ·ç‚¹å°‘çš„è¾¹è¿›è¡Œæ’å€¼çš„æ–¹æ³•ï¼Œä½¿å¾—é•¿å’Œå®½ä¸€è‡´
 % Etheta_cut_angles = interp2(x,y,Etheta_cut',xq,yq,'spline');
 
 Etheta_maxValue = max(max(data_nf2ff.Etheta(i)));
 Ephi_maxValue = max(max(data_nf2ff.Ephi(j)));
 
 if normalized == true
-    %È¡²»È¡absÍ¼Ïñ¼¸ºõÃ»ÓĞ²î±ğ
+    %å–ä¸å–abså›¾åƒå‡ ä¹æ²¡æœ‰å·®åˆ«
     %Etheta_cut =  data_nf2ff.Etheta(i)/Etheta_maxValue;
-	%Ephi_cut =  data_nf2ff.Ephi(j)/Ephi_maxValue;
+    %Ephi_cut =  data_nf2ff.Ephi(j)/Ephi_maxValue;
     Etheta_cut =  abs(data_nf2ff.Etheta(i))/Etheta_maxValue;
     Ephi_cut =  abs(data_nf2ff.Ephi(j))/Ephi_maxValue;
 else
@@ -46,17 +46,18 @@ if logarithmic == true
     plot(Etheta_cut_angles*180/pi,20*log10(Eref),Etheta_cut_angles*180/pi,20*log10(Ecross));
     legend("Ecross","Eref");
     xlabel('theta');
-    ylabel('E_{ref}¡¢E_{cross}');
-%     xlabel('theta');
-%     ylabel('E_{cross}');
+    ylabel('E_{ref}ã€E_{cross}');
+    %xlabel('theta');
+    %ylabel('E_{cross}');
 elseif logarithmic == false
     figure
+    title("this is Eref and Ecorss!");
     plot(Etheta_cut_angles*180/pi,Eref,Etheta_cut_angles*180/pi,Ecross);
     legend("Ecross","Eref");
     xlabel('theta');
-    ylabel('E_{ref}¡¢E_{cross}');
-%     xlabel('theta');
-%     ylabel('E_{cross}');
+    ylabel('E_{ref}ã€E_{cross}');
+    %xlabel('theta');
+    %ylabel('E_{cross}');
 end
 hold on
 end
