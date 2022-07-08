@@ -13,9 +13,6 @@ j = find(data_nf2ff.theta==theta_cut);
 Etheta_cut_angles = data_nf2ff.theta(i);
 Ephi_cut_angles = data_nf2ff.phi(j);
 
-% %由于采样平面不是正方形，长和宽不一样，计算时难以运算
-% %采用对采样点少的边进行插值的方法，使得长和宽一致
-% Etheta_cut_angles = interp2(x,y,Etheta_cut',xq,yq,'spline');
 
 Etheta_maxValue = max(max(data_nf2ff.Etheta(i)));
 Ephi_maxValue = max(max(data_nf2ff.Ephi(j)));
