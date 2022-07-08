@@ -37,13 +37,8 @@ disp('__________this is the beginning__________')
 
 Amp=Current_Excitation(M,N,dx,dy);%计算电流分布Amn
 %%
-for i = 11:1:15
-    for j = 18:1:21
-        Amp(i,j)=0;
-    end
-end
-
-surf(Amp)
+% 将对称阵子指定点电流赋值为0
+% Amp=makeImZero(Amp,11,15,18,21);
 %%
 Ideal_Pattern(Amp,M,N,lambda,dx,dy,Im,theta)%计算理想平面方向图
 
@@ -53,5 +48,7 @@ disp('__________plotting the pattern by NFtransition Algorithm Using FFT________
 data_nf2ff = nf2ff_planar_fft(Amp,M,N,lambda,dx,dy,deltax,deltay,Im,theta,phi,d,Mc,Nc,padding);%用平面波谱推导远场方向图
 disp('__________plotting phi=0 and phi=90 cut__________');
 plotFFPhiCut(data_nf2ff,[0,pi/2]);
+disp('__________plotting X-pol and C-pol__________');
+plotFFPolarization(data_nf2ff,0);
 disp('__________this is the end__________')
 
